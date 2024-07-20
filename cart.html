@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Chart.js Example</title>
+  <script src="chart.min.js"></script>
+</head>
+<body>
+    <div style="width: 450px;">
+
+        <canvas id="myChart" width="400" height="400"></canvas>
+    </div>
+
+  <script>
+    // Sample data
+    const labels = ['January', 'February', 'March', 'April', 'May', 'June'];
+    const upperLimitData = [0, 0.2, 0.10, 0.15, 0.20, 0.24];
+    const lowerLimitData = [5,5,5,5,5,5];
+    const middelLimitData = [15,15,15,15,15,15];
+
+    const ctx = document.getElementById('myChart').getContext('2d');
+    const myChart = new Chart(ctx, {
+      type: 'line',
+      data: {
+        labels: labels,
+        datasets: [{
+          label: 'D1',
+          borderColor: 'rgba(255, 99, 132, 1)',
+          data: upperLimitData,
+          fill: false
+        }, {
+          label: 'Lower Limit',
+          borderColor: 'rgba(54, 162, 235, 1)',
+          data: lowerLimitData,
+          fill: false
+        }, {
+          label: 'Upper Limit',
+          borderColor: 'rgba(54, 162, 235, 1)',
+          data: middelLimitData,
+          fill: false
+        }]
+      },
+      options: {
+        scales: {
+          yAxes: [{
+            ticks: {
+              beginAtZero: true
+            }
+          }]
+        }
+      }
+    });
+  </script>
+</body>
+</html>
